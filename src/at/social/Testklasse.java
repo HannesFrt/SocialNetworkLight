@@ -6,6 +6,9 @@ public class Testklasse {
 		System.out.println("Test");
 		System.out.println("Test 2");
 		System.out.println("");
+		for (int i = 0; i < args.length; i++) {
+			
+		}
 	}
 
 }
