@@ -25,7 +25,6 @@ public class NachrichtenEinsendung extends Einsendung {
 		Nachrichtentext = nachrichtentext;
 	}
 	
-	
 	public String anzeigen() {
 	    super.anzeigen();
 	    return "NachrichtenEinsendung [Nachrichtentext=" + Nachrichtentext + "]";
