@@ -41,7 +41,6 @@ public class FotoEinsendung extends Einsendung {
 		this.überschrift = überschrift;
 	}
 
-	@Override
 	public String anzeigen() {
 		super.anzeigen();
 		return "FotoEinsendung [dateiname=" + dateiname + ", überschrift=" + überschrift + "]";

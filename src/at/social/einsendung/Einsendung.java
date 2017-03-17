@@ -50,8 +50,8 @@ public class Einsendung {
 
 	
 	public String anzeigen() {
-		return "Einsendung [Autor=" + Autor + ", GefälltAnzahl=" + GefälltAnzahl + ", Kommentare=" + Kommentare
-				+ ", Zeitstempel=" + Zeitstempel + "]";
+		return "Autor=" + Autor + ", GefälltAnzahl=" + GefälltAnzahl + ", Kommentare=" + Kommentare
+				+ ", Zeitstempel=" + Zeitstempel;
 	}
 	
 	
