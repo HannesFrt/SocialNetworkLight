@@ -7,7 +7,13 @@ public class FotoEinsendung extends Einsendung {
 	private String dateiname;
 	private String überschrift;
 		
-
+	public FotoEinsendung() {
+		super("Default", 0, new ArrayList<>(), 0);
+		setDateiname("Default");
+		setÜberschrift("Default");
+		
+	}
+	
 	public FotoEinsendung(String autor, int gefälltAnzahl, ArrayList<String> kommentare, long zeitstempel, String dateiname, String überschrift) {
 		super(autor, gefälltAnzahl, kommentare, zeitstempel);
 		setDateiname(dateiname);

@@ -28,6 +28,12 @@ public class NewsFeed {
 		}
 	}
 
+	public void einsendungLöschen(int i) {
+		if (i < einsendungen.size()) {
+			einsendungen.remove(i);
+		}
+	}
+
 	public ArrayList<Einsendung> einsendungVonAnzeigen(String Autor) {
 		ArrayList<Einsendung> eausgabe = new ArrayList<>();
 
@@ -44,8 +50,12 @@ public class NewsFeed {
 	}
 
 	public ArrayList<Einsendung> alleEinsendungenAnzeigen() {
+		
 		ArrayList<Einsendung> alleEinsendungen = new ArrayList<>(einsendungen);
-		return alleEinsendungen;	
+		if(alleEinsendungen.isEmpty()){
+			System.out.println("Noch keine Einsendungen vorhanden.");
+		}
+		return alleEinsendungen;
 	}
 
 	public String getNewsText() {
