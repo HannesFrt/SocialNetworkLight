@@ -20,16 +20,16 @@ public class MenuController {
 
 	public void startMenu() {
 		menuAnzeigen();
-		init();
+		getInput();
 		einsendung = null;
 	}
 
 	private void menuAnzeigen() {
-		System.out.println("*__________Menu__________*\n" + " [1] alle Einsendungen anzeigen\n"
+		System.out.println("_________________Menu_________________\n" + " [1] alle Einsendungen anzeigen\n"
 				+ " [2] Einsendung von Autor anzeigen\n" + " [3] Einsendung hinzufügen\n" + " [4] Einsendung löschen");
 	}
 
-	private void init() {
+	private void getInput() {
 		int eingabe = scan.nextInt();
 		switch (eingabe) {
 		case 1:
@@ -37,7 +37,7 @@ public class MenuController {
 			break;
 		case 2:
 			System.out.println("Geben Sie einen Autor ein");
-			scan.next();
+			scan.nextLine();
 			String autor = scan.nextLine();
 			vonAnzeigen(autor);
 			break;
@@ -50,7 +50,7 @@ public class MenuController {
 		case 4:
 			System.out.println("Geben Sie den Index der zu löschenden Einsendung ein");
 			int i = scan.nextInt();
-			löschen(i);
+			löschen(--i);
 			break;
 
 		default:
@@ -67,6 +67,9 @@ public class MenuController {
 		int auswahl = scan.nextInt();
 		if (!(auswahl > 2) && !(auswahl < 1)) {
 			setupEinsendung(auswahl);
+		}else{
+			System.out.println("auswahl nicht gültig");
+			einsendungAuswahl();
 		}
 	}
 
@@ -103,11 +106,11 @@ public class MenuController {
 
 	private void einsendungMenu() {
 		System.out.println("Geben Sie einen Autor an");
-		scan.next();
+		scan.nextLine();
 		String autor = scan.nextLine();
 		einsendung.setAutor(autor);
 		einsendung.setGefälltAnzahl(0);
-		einsendung.setZeitstempel(System.currentTimeMillis() % 1000);
+		einsendung.setZeitstempel(System.currentTimeMillis());
 	}
 
 	private void anzeigen() {
@@ -121,8 +124,8 @@ public class MenuController {
 		startMenu();
 	}
 
-	private void vonAnzeigen(String Autor) {
-		for (Einsendung e : newsFeed.einsendungVonAnzeigen(Autor)) {
+	private void vonAnzeigen(String a) {
+		for (Einsendung e : newsFeed.einsendungVonAnzeigen(a)) {
 			if (e != null) {
 				System.out.println(e.anzeigen());
 			}

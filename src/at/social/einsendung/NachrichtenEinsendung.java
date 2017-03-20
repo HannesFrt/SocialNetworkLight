@@ -3,17 +3,18 @@ package at.social.einsendung;
 import java.util.ArrayList;
 
 public class NachrichtenEinsendung extends Einsendung {
-	
+
 	private String Nachrichtentext;
 
 	public NachrichtenEinsendung() {
-		super("Default", 0, new ArrayList<>(), 0);
+		super("Default", 0, new ArrayList<>());
 		setNachrichtentext("Default");
-		
+
 	}
-	
-	public NachrichtenEinsendung(String autor, int gefälltAnzahl, ArrayList<String> kommentare, long zeitstempel, String nachrichtentext) {
-		super(autor, gefälltAnzahl, kommentare, zeitstempel);
+
+	public NachrichtenEinsendung(String autor, int gefälltAnzahl, ArrayList<String> kommentare,
+			String nachrichtentext) {
+		super(autor, gefälltAnzahl, kommentare);
 		setNachrichtentext(nachrichtentext);
 	}
 
@@ -24,10 +25,10 @@ public class NachrichtenEinsendung extends Einsendung {
 	public void setNachrichtentext(String nachrichtentext) {
 		Nachrichtentext = nachrichtentext;
 	}
-	
+
 	public String anzeigen() {
-	    super.anzeigen();
-	    return "NachrichtenEinsendung [Nachrichtentext=" + Nachrichtentext + "]";
+
+		return super.anzeigen() + "\nNachricht:" + Nachrichtentext;
 	}
 
 }

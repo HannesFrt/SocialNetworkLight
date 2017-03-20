@@ -3,17 +3,17 @@ package at.social.einsendung;
 import java.util.ArrayList;
 
 public class Einsendung {
-	
+
 	private String Autor;
 	private int GefälltAnzahl;
 	private ArrayList<String> Kommentare;
 	private long Zeitstempel;
-	
-	public Einsendung(String autor, int gefälltAnzahl, ArrayList<String> kommentare, long zeitstempel) {
+
+	public Einsendung(String autor, int gefälltAnzahl, ArrayList<String> kommentare) {
 		setAutor(autor);
 		setGefälltAnzahl(gefälltAnzahl);
 		setKommentare(kommentare);
-		setZeitstempel(zeitstempel);
+		setZeitstempel(System.currentTimeMillis());
 	}
 
 	public String getAutor() {
@@ -48,18 +48,22 @@ public class Einsendung {
 		Zeitstempel = zeitstempel;
 	}
 
-	
 	public String anzeigen() {
-		return "Autor=" + Autor + ", GefälltAnzahl=" + GefälltAnzahl + ", Kommentare=" + Kommentare
-				+ ", Zeitstempel=" + Zeitstempel;
+		StringBuilder builder = new StringBuilder();
+		builder.append("_________________EINSENDUNG_________________\n");
+		builder.append("Erstellt von " + Autor + "\n");
+		builder.append(GefälltAnzahl + " Gefällt mir\n");
+		builder.append("Kommentare: \n");
+		for (String s : Kommentare) {
+			builder.append(s + "\n");
+		}
+		long time = (System.currentTimeMillis() - Zeitstempel) / 1000;
+		if (time <= 5) {
+			builder.append("Gerade eben erstellt.");
+		} else {
+			builder.append("Vor " + ((System.currentTimeMillis() - Zeitstempel) / 1000) + " Sekunden erstellt");
+		}
+		return builder.toString();
 	}
-	
-	
-	
-	
-	
-	
-
-	
 
 }

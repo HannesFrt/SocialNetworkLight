@@ -36,12 +36,13 @@ public class NewsFeed {
 
 	public ArrayList<Einsendung> einsendungVonAnzeigen(String Autor) {
 		ArrayList<Einsendung> eausgabe = new ArrayList<>();
-
+		
 		for (Einsendung e : einsendungen) {
 			if (e.getAutor().equals(Autor)) {
 				eausgabe.add(e);
 			}
 		}
+		
 		if (eausgabe.isEmpty()) {
 			System.out.println("Keine einsendungen von dem Autor " + Autor + " gefunden.");
 		}
@@ -50,9 +51,9 @@ public class NewsFeed {
 	}
 
 	public ArrayList<Einsendung> alleEinsendungenAnzeigen() {
-		
+
 		ArrayList<Einsendung> alleEinsendungen = new ArrayList<>(einsendungen);
-		if(alleEinsendungen.isEmpty()){
+		if (alleEinsendungen.isEmpty()) {
 			System.out.println("Noch keine Einsendungen vorhanden.");
 		}
 		return alleEinsendungen;
