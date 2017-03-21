@@ -12,7 +12,7 @@ public class app {
 	public static void main(String[] args) {
 		
 		
-		//Einfache darstellung der Ersetzbarkeit und dynmischen Bindung der Codebasis
+		//Einfache darstellung der Ersetzbarkeit und dynamischen Bindung der Codebasis
 		/*
 		Einsendung nachricht = new NachrichtenEinsendung("Hannes", 2000, null, (System.currentTimeMillis() % 1000), "Meine Nachricht");
 		Einsendung foto = new FotoEinsendung("Phillipp", 0, null, (System.currentTimeMillis() % 1000), "haus.png", "Mein Haus");
@@ -24,8 +24,6 @@ public class app {
 			e.anzeigen();
 		}
 		*/
-		
-		
 		
 		//Code zum Ausführen des Menüs
 		NewsFeed newsFeed = new NewsFeed("Ich bin ein Newsfeed");
