@@ -1,5 +1,6 @@
 package at.social.menu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import at.social.NewsFeed;
 import at.social.einsendung.Einsendung;
@@ -42,7 +43,7 @@ public class MenuController {
 			vonAnzeigen(autor);
 			break;
 		case 3:
-			einsendungAuswahl();
+			einsendungsMenu();
 			if (einsendung != null) {
 				hinzufügen(einsendung);
 			}
@@ -60,24 +61,16 @@ public class MenuController {
 		scan.close();
 	}
 
-	private void einsendungAuswahl() {
+	private void einsendungsMenu() {
 		System.out.println("Einsendungen Auswahl");
 		System.out.println("[1] Nachrichteneinsendung");
 		System.out.println("[2] Fotoeinsendung");
+		System.out.println("[3] abbruch.");
 		int auswahl = scan.nextInt();
-		if (!(auswahl > 2) && !(auswahl < 1)) {
-			setupEinsendung(auswahl);
-		}else{
-			System.out.println("auswahl nicht gültig");
-			einsendungAuswahl();
-		}
-	}
+		if (auswahl == 1) {
 
-	private void setupEinsendung(int auswahl) {
-		switch (auswahl) {
-		case 1:
 			einsendung = new NachrichtenEinsendung();
-			einsendungMenu();
+			einsendungDefault();
 			NachrichtenEinsendung n = null;
 			if (einsendung instanceof NachrichtenEinsendung) {
 				n = (NachrichtenEinsendung) einsendung;
@@ -85,10 +78,9 @@ public class MenuController {
 			System.out.println("Geben Sie einen Nachrichtentext ein");
 			String text = scan.nextLine();
 			n.setNachrichtentext(text);
-			break;
-		case 2:
+		} else if (auswahl == 2) {
 			einsendung = new FotoEinsendung();
-			einsendungMenu();
+			einsendungDefault();
 			FotoEinsendung f = null;
 			if (einsendung instanceof FotoEinsendung) {
 				f = (FotoEinsendung) einsendung;
@@ -99,18 +91,23 @@ public class MenuController {
 			String überschrift = scan.nextLine();
 			f.setDateiname(dateiname);
 			f.setÜberschrift(überschrift);
-			break;
-		}
 
+		} else if (auswahl == 0) {
+			startMenu();
+		} else {
+			System.out.println("auswahl nicht gültig");
+			einsendungsMenu();
+		}
 	}
 
-	private void einsendungMenu() {
+	private void einsendungDefault() {
 		System.out.println("Geben Sie einen Autor an");
 		scan.nextLine();
 		String autor = scan.nextLine();
 		einsendung.setAutor(autor);
 		einsendung.setGefälltAnzahl(0);
 		einsendung.setZeitstempel(System.currentTimeMillis());
+		einsendung.setKommentare(new ArrayList<String>());
 	}
 
 	private void anzeigen() {
